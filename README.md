@@ -1,10 +1,10 @@
 
 # Engauge
-Engauge is the engagement level tracker application developed for *John Hopkins University Applied Physics Laboratory*. Our project explored potential uses engagement tracking metrics in the contexts of DOD, project management, and education. Engauge demonstrates the use of facial recognition technologies to predict engagement levels in subjects looking at the screen.
+Engauge is the engagement level tracker application developed for John Hopkins University Applied Physics Laboratory. Our project explored potential uses engagement tracking metrics in the contexts of DOD, project management, and education. Engauge demonstrates the use of facial recognition technologies to predict engagement levels in subjects looking at the screen.
 
 ## Requirements
 - OS: Ubuntu 20.04.1 LTS
-- Specs: [D2as_v4](https://learn.microsoft.com/en-us/azure/virtual-machines/dav4-dasv4-series) size on Azure
+- Specs: [D2as_v4](https://learn.microsoft.com/en-us/azure/virtual-machines/dav4-dasv4-series) on Azure
 
 ## Setup
 Install Python3.6.
@@ -15,7 +15,9 @@ sudo apt-get install python3.6
 ```
 
 Install Python dependencies.
-`python3 -m pip install tensorflow==1.5.5 matplotlib pandas`
+```
+python3 -m pip install tensorflow==1.5.5 matplotlib pandas
+```
 
 Install OpenFace. OpenFace is an open-source facial recognition project that collects features for our model predictions. Run the following code from outside the Engauge folder.
 ```
