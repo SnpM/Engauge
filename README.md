@@ -16,7 +16,7 @@ sudo apt-get install python3.6
 
 Install Python dependencies.
 ```
-python3 -m pip install tensorflow==1.5.5 matplotlib pandas
+python3.6 -m pip install tensorflow==1.5.5 matplotlib pandas
 ```
 
 Install OpenFace. OpenFace is an open-source facial recognition project that collects features for our model predictions. Run the following code from outside the Engauge folder.
