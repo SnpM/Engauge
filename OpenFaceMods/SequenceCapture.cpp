@@ -206,6 +206,7 @@ void SequenceCapture::Reset(){
 	start_time = cv::getTickCount();
 	name = "webcam_" + currentDateTime();
 }
+
     // -----
 bool SequenceCapture::OpenWebcam(int device, int image_width, int image_height, float fx, float fy, float cx, float cy)
 {

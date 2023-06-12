@@ -76,7 +76,7 @@ class FeatureCollection():
 
 	def parse_gaze_features(self, txt_path):
 		try:
-			df = pd.read_csv(txt_path, header=0, sep=',').values
+			df = pd.read_csv(txt_path, header=None, sep=',', error_bad_lines=False).values
 			seq_length = df.shape[0]
 			indexing = int((self.n_segments - 1) * (1 - self.alpha))
 			k_value = seq_length // (1 + indexing)  # In some case, we will ignore some last frames
@@ -94,7 +94,7 @@ class FeatureCollection():
 
 			ret = np.vstack(ret)
 		except:
-			print('IO error')
+			#print('IO error')
 			ret = None
 		return ret
 

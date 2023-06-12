@@ -1,3 +1,54 @@
+
+# Engauge
+Engauge is the engagement level tracker application developed for *John Hopkins University Applied Physics Laboratory*. Our project explored potential uses engagement tracking metrics in the contexts of DOD, project management, and education. Engauge demonstrates the use of facial recognition technologies to predict engagement levels in subjects looking at the screen.
+
+## Requirements
+- OS: Ubuntu 20.04.1 LTS
+- Specs: [D2as_v4](https://learn.microsoft.com/en-us/azure/virtual-machines/dav4-dasv4-series) size on Azure
+
+## Setup
+Install Python3.6.
+```
+sudo add-apt-repository ppa:deadsnakes/ppa
+apt-get update
+sudo apt-get install python3.6
+```
+
+Install Python dependencies.
+`python3 -m pip install tensorflow==1.5.5 matplotlib pandas`
+
+Install OpenFace. OpenFace is an open-source facial recognition project that collects features for our model predictions. Run the following code from outside the Engauge folder.
+```
+git clone https://github.com/TadasBaltrusaitis/OpenFace.git
+cd OpenFace
+bash ./download_models.sh
+sudo bash ./install.sh
+```
+
+Rebuild OpenFace with the modified files. The following shell code assumes that the OpenFace and Engauge projects have the same parent folder.
+```
+cp Engauge/OpenFaceMods/FeatureExtraction.cpp OpenFace/exe/FeatureExtraction/FeatureExtraction.cpp
+cp Engauge/OpenFaceMods/SequenceCapture.cpp OpenFace/lib/local/Utilities/src/RecorderCSV.cpp
+cp Engauge/OpenFaceMods/RecorderCSV.cpp OpenFace/lib/local/Utilities/src/SequenceCapture.cpp
+cp Engauge/OpenFaceMods/SequenceCapture.h lib/local/Utilities/include/SequenceCapture.h
+```
+
+Run the program.
+```
+cd Enguage
+./predict.py
+```
+
+## Known Issues
+The model produces several Numpy warnings and anomalous results produced that did not significantly impact the demonstration, but should be fixed for production. Our hardware also didn't have a GPU, so low frame rate may have affected the prediction performance. For future iterations of this project, I recommend porting the code to the most recent version of Python and TensorFlow and taking advantage of a GPU for more feature frames per second and lower latency calculations.
+
+## Credits
+This demonstration was developed by John Pan with the ideas and help of my teammates: Caleb Song, Weiss Yuan, Soleil Xie, Alex Gannon, and Kyle Yelensky. Our APL Circuit mentors--Aishwarya Jayabharathi, Jorge Rivera, and Will Gray-Roncal--guided our research and demonstrations. This application uses the models and scripts in the [Engagement-Level-Reader](https://github.com/AnshulSood11/Engagement-Level-Prediction) project. We modified their scripts for demonstration purposes.
+
+The following section contains the README for the original Engagement-Level-Prediction project.
+
+-----------------------------------------------
+
 # Engagement-Level-Prediction
 Real-time engagement-intensity prediction.
 

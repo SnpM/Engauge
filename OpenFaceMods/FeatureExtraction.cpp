@@ -138,7 +138,7 @@ int main(int argc, char **argv)
 
 	INFO_STREAM("Device or file opened");
 
-	if (sequence_reader.IsWebcam())
+	if (sequence_reader.IsWebcam() && false)
 	{
 		INFO_STREAM("WARNING: using a webcam in feature extraction, Action Unit predictions will not be as accurate in real-time webcam mode");
 		INFO_STREAM("WARNING: using a webcam in feature extraction, forcing visualization of tracking to allow quitting the application (press q)");
@@ -250,8 +250,8 @@ int main(int argc, char **argv)
 				}
 				reported_completion = reported_completion + 1;
 			}
-			if(frame_count>99){
-				sequence_reader.Reset();
+			if(frame_count>5){
+				//sequence_reader.Reset();
 				break;
 			}
             // Grabbing the next frame in the sequence
